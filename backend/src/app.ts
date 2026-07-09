@@ -15,6 +15,15 @@ export function createApp() {
   app.use("/api/products", productRoutes);
   app.use("/api/orders", orderRoutes);
 
+  app.use((req, res) => {
+    res.status(404).json({
+      error: {
+        code: "NOT_FOUND",
+        message: `Route ${req.method} ${req.path} does not exist`,
+      },
+    });
+  });
+
   app.use(errorHandler);
 
   return app;
