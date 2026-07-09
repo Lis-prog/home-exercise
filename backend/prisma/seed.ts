@@ -1,4 +1,6 @@
-import { prisma } from "../src/lib/prisma";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 const products = [
   { name: "Wireless Mouse", sku: "MSE-001", price: 24.99, stockQuantity: 25, category: "Accessories" },
