@@ -1,0 +1,12 @@
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  test: {
+    environment: "node",
+    include: ["src/**/*.test.ts"],
+    fileParallelism: false,
+    setupFiles: ["dotenv/config"],
+    hookTimeout: 30000,
+    testTimeout: 30000,
+  },
+});
