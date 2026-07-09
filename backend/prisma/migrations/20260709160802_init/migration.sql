@@ -54,8 +54,8 @@ ALTER TABLE "OrderItem" ADD CONSTRAINT "OrderItem_orderId_fkey" FOREIGN KEY ("or
 -- AddForeignKey
 ALTER TABLE "OrderItem" ADD CONSTRAINT "OrderItem_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Product"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
--- Guarantee stock can never go negative, even if application logic fails
+-- stock can never go negative, even if app logic has a bug
 ALTER TABLE "Product" ADD CONSTRAINT "Product_stockQuantity_nonneg" CHECK ("stockQuantity" >= 0);
 
--- Guarantee ordered quantities are always positive
+-- ordered quantity must be positive
 ALTER TABLE "OrderItem" ADD CONSTRAINT "OrderItem_quantity_positive" CHECK ("quantity" > 0);
